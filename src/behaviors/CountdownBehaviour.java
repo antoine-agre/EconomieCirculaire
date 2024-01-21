@@ -1,7 +1,9 @@
+package behaviors;
+
 import jade.core.behaviours.Behaviour;
 import static java.lang.System.out;
 
-public class CountdownBehavior extends Behaviour {
+public class CountdownBehaviour extends Behaviour {
 
     int timeLeft = 10;
 
