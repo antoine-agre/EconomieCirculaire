@@ -1,12 +1,13 @@
 package agents;
 
-import behaviors.SeekingAdviceBehaviour;
+import behaviours.BreakdownFSMBehaviour;
 import gui.UserAgentWindow;
 import jade.core.AID;
 import jade.core.AgentServicesTools;
 import jade.gui.GuiAgent;
 import jade.gui.GuiEvent;
 import jade.lang.acl.ACLMessage;
+import models.Part;
 import models.Product;
 import models.ProductType;
 
@@ -20,6 +21,8 @@ public class UserAgent extends GuiAgent {
     List<Product> products = new ArrayList<Product>();
     Product selectedProduct;
     private ACLMessage cfpMessage;
+    int skill;
+    Product brokenProduct = null;
 
 
     // Methods
@@ -45,26 +48,18 @@ public class UserAgent extends GuiAgent {
             window.println("\t" + product.toString());
         }
 
+        // Skill
+        skill = rnd.nextInt(4); //0 to 3
+        window.println("My skill level is " + skill);
 
         // List
         window.addProductsToCombo(products);
 
         println("Je suis l'agent " + getLocalName());
 
-//        addBehaviour(seekingAdviceBehaviour());
-
-        ////////
-
-
-
-//        addBehaviour(new SeekingAdviceBehaviour(this, window, cfpMessage));
-
-        ////////
-
-        // Repair cafes
-
     }
 
+    @Deprecated
     /**
      * Returns a CFP message addressed to all repair cafes found.
      * @return the created ACLMessage.
@@ -86,9 +81,14 @@ public class UserAgent extends GuiAgent {
     @Override
     protected void onGuiEvent(GuiEvent guiEvent) {
         if (guiEvent.getType() == UserAgentWindow.OK_EVENT) {
-            //TODO: choose behaviour depending on knowledge level
 
-            addBehaviour(new SeekingAdviceBehaviour(this, window, prepareMessage()));
+            // Cause breakdown on element
+            brokenProduct = window.getComboProduct();
+            brokenProduct.causeBreakdown();
+            window.println("Following part had a breakdown : Part" + brokenProduct.getProductType().toString() + String.valueOf(brokenProduct.getBrokenPart()));
+
+            addBehaviour(new BreakdownFSMBehaviour(this, window));
+//            addBehaviour(new SeekingAdviceBehaviour(this, window, prepareMessage()));
 
             window.setButtonActivated(false);
         }
@@ -97,5 +97,13 @@ public class UserAgent extends GuiAgent {
     @Override
     protected void println(String text) {
         window.println(text);
+    }
+
+    public int getSkill() {
+        return skill;
+    }
+
+    public Product getBrokenProduct() {
+        return brokenProduct;
     }
 }

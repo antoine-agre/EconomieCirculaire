@@ -5,21 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="554b5701-5465-4731-a6ee-9e14f272adb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/agents/RepairCafeAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/agents/SparePartStoreAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/agents/UserAgent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/behaviors/BreakdownFSMBehaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/behaviors/SeekingAdviceBehaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/gui/UserAgentWindow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Part.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/ProductType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/stores/IStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/behaviours/BreakdownFSMBehaviour.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/behaviours/DoIHaveKnowledgeBehaviour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AgentHello.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AgentHello.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CountdownBehavior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviors/CountdownBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agents/RepairCafeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/RepairCafeAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/agents/UserAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/UserAgent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviors/BreakdownFSMBehaviour.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviors/CountdownBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviours/CountdownBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviors/SeekingAdviceBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviours/SeekingAdviceBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +67,7 @@
       <recent name="gui" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="EconomieCirculaire" />
@@ -79,9 +75,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Scratch" type="Java Scratch" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Scratch" />
+      <option name="SCRATCH_FILE_URL" value="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Java Scratch.Scratch" />
       </list>
     </recent_temporary>
   </component>

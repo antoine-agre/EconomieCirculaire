@@ -96,7 +96,10 @@ public class RepairCafeAgent extends AgentWindowed {
             @Override
             protected ACLMessage handleAcceptProposal(ACLMessage cfp, ACLMessage propose, ACLMessage accept) throws FailureException {
                 window.println("Proposal to " + cfp.getSender().getName() + " was accepted !");
-                return super.handleAcceptProposal(cfp, propose, accept);
+                ACLMessage answer = accept.createReply();
+                answer.setPerformative(ACLMessage.INFORM);
+                return answer;
+//                return super.handleAcceptProposal(cfp, propose, accept);
             }
         });
 

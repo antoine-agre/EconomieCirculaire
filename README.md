@@ -6,6 +6,17 @@ Case study in agent-oriented programming.
 
 ## Model
 
+#### ProductType
+
+La classe ProductType représente un type de produit.
+
+Variables :
+
+- `nbParts` : le nombre de pièces que contient le produit ;
+- `standPrice` : le prix standard de la pièce.
+
+
+
 ### Agents
 
 <!--

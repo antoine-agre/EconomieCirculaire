@@ -1,10 +1,9 @@
-package behaviors;
+package behaviours;
 
 import gui.UserAgentWindow;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
-import jade.proto.AchieveREInitiator;
 import jade.proto.ContractNetInitiator;
 
 import java.time.LocalDateTime;
@@ -36,7 +35,7 @@ public class SeekingAdviceBehaviour extends ContractNetInitiator {
     @Override
     public int onEnd() {
         window.println("Ending ContractNetInitiator.");
-        return super.onEnd();
+        return 0;
     }
 
     @Override

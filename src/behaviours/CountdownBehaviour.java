@@ -1,4 +1,4 @@
-package behaviors;
+package behaviours;
 
 import jade.core.behaviours.Behaviour;
 import static java.lang.System.out;

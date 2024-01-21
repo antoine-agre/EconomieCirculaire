@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Part {
 
@@ -21,6 +22,12 @@ public class Part {
         this.id = id;
     }
 
+    public static Part fromTemplate(Part template) {
+        Random rnd = new Random();
+        Double price = template.getPrice() * (1 + (Math.random()*0.3 - 0.15));;
+        return new Part(template.getProductType(), price, template.getId());
+    }
+
 //    public Part(Part part) {
 //        this.productType = part.productType;
 //        this.standardPrice = part.standardPrice;
@@ -30,7 +37,8 @@ public class Part {
 
     @Override
     public String toString() {
-        return "(" + id + " - " + price + "€)";
+        String priceStr = String.format("%.2f", price);
+        return "(" + id + " - " + priceStr + "€)";
     }
 
 
@@ -40,9 +48,9 @@ public class Part {
         if (listParts == null) {
 
             listParts = new ArrayList<Part>();
-            for (ProductType productType: ProductType.values()) {
+            for (ProductType productType : ProductType.values()) {
                 for (int i = 1; i <= productType.getNbParts(); i++) {
-                    listParts.add(new Part(productType, ((2/3)^i)*productType.getStandardPrice(), "Part"+productType.name()+i));
+                    listParts.add(new Part(productType, Math.pow(2.0/3.0,i)*productType.getStandardPrice(), "Part"+productType.name()+i));
                 }
             }
         }
