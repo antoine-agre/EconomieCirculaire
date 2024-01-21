@@ -3,6 +3,7 @@ package behaviours;
 import jade.core.behaviours.Behaviour;
 import static java.lang.System.out;
 
+@Deprecated
 public class CountdownBehaviour extends Behaviour {
 
     int timeLeft = 10;

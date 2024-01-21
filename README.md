@@ -4,20 +4,41 @@ Case study in agent-oriented programming.
 
 [Full subject here](https://github.com/EmmanuelADAM/jade/tree/english/issia23).
 
-## Model
+> Antoine AGRÉ, FISE 5A ICy
 
-#### ProductType
+## Contexte
 
-La classe ProductType représente un type de produit.
+Ce projet utilise le framework JADE, en particulier le projet JadeUPHF, pour modéliser et simuler une économie circulaire.
 
-Variables :
+On modélise des utilisateurs possédant des produits, et le processus qu'ils suivent lorsqu'un dysfonctionnement apparaît.
 
-- `nbParts` : le nombre de pièces que contient le produit ;
-- `standPrice` : le prix standard de la pièce.
+Un outil central dans cette modélisation est le CFP (Call For Project), qui est utilisé par les utilisateurs pour représenter une recherche de produit ou de service parmi un type de magasin.
 
+## Programme
 
+La classe `Main` est le point d'entrée du programme : elle crée les produits de référence et initialise la simulation.
 
-### Agents
+Le package `agents` contient les classes définissant les agents : 
+
+- `UserAgent` : un utilisateur ;
+- `RepairCafeAgent` : un repair café ;
+- `SparePartStoreAgent` : une boutique de pièces détachées (pas encore utilisé).
+
+Le package `behaviours` contient les comportements utilisés par les agents :
+
+- `BreakdownFSMBehaviour` : le comportement que suit un utilisateur en réaction à une panne, suivant une machine à états finis ;
+- `DoIHaveKnowledgeBehaviour` : représente un nœud de choix dans la modélisation en FSM, vérifiant si l'utilisateur a des connaissances suffisantes pour savoir quelle pièce acheter ;
+- `SeekingAdviceBehaviour` : comportement ContractNetInitiator, utilisé pour demander un RDV aux repair cafés pouvoir connaître la pièce à acheter.
+
+Le package `gui` contient `UserAgentWindow`, [adaptée du projet d'Emmanuel Adam](https://github.com/EmmanuelADAM/jade/blob/english/handsOn/circularEconomy/gui/UserAgentWindow.java), qui ajoute une interface de sélection de produit pour les utilisateurs.
+
+Enfin, le package `models` contient les classes modélisant les éléments de la simulation : `Part`, `Product`, et `ProductType`.
+
+## Diagrammes
+
+### Diagramme de classes
+
+Diagramme réalisé au début du projet, montrant les différentes classes utilisées. Certains éléments ne sont plus à jour.
 
 <!--
 ```
@@ -131,86 +152,15 @@ User -> Distributor : visits
 
 ---
 
-<!--
-```
-@startuml sequence
+### Diagramme d'activité
 
-start
+Ce diagramme est le centre du projet, et représente le cheminement d'un utilisateur confronté à une panne.
 
-:Broken Object;
+Pour l'instant, seule la partie correspondant à "Seeking Advice" est implémentée (jusqu'au nœud précédant "Is repairable?").
 
-if (Enough confidence and money?) then (Yes)
-    :Repair Cafe;
-    if (Fixed?) then (Yes)
-        :Done;
-else (No)
-if (Enough confidence and money?) then (Yes)
-    :Second Hand Store;
-else (No)
-if (Enough confidence and money?) then (Yes)
-    :Spare Parts Store;
-else (No)
-if (Enough money?) then (Yes)
-    :Distributor;
-else (No)
-    stop
+Ce diagramme est implémenté par `BreakdownFSMBehaviour`, qui est donc une machine à états finis.
 
-@enduml```
--->
-
-<!--
-```
-@startuml activity
-
-start
-
-:Broken Object;
-
-if (Enough Confidence and Money?) then (Yes)
-    :Repair Cafe;
-    :Done;
-else
-
-:A;
-
-if (Enough confidence and money?) then (Yes)
-    :Repair Cafe;
-elseif (Enough confidence and money?) then (Yes)
-    :Second Hand Store;
-elseif (Enough confidence and money?) then (Yes)
-    :Spare Parts Store;
-elseif (Enough money?) then (Yes)
-    :Distributor;
-else (No)
-    :Done;
-endif
-
-stop
-
-@enduml```
--->
-
-
-
-<!--
-```
-@startuml main
-title Main Process
-
-(*) -> "Breakdown"
-if "User has knowledge?" then
-    -> [yes] "Repair check"
-    if "Is repairable?" then
-        -> [yes] "Look for needed part"
-    endif
-else
-    -> [no] "CFP repair cafe for advice"
-endif
-
-"CFP repair cafe for advice" -> "Repair check"
-
-@enduml```
--->
+Dans la partie déjà implémentée par exemple, l'utilisateur va vérifier si son niveau de connaissances lui permet de savoir quelle pièce remplacer. Si le niveau est trop bas, il entre dans le `SeekingAdviceBehaviour`, et cherche à établir un rendez-vous avec un repair café pour y demander conseil. Si le niveau est suffisant, l'utilisateur n'a pas besoin de cette étape.
 
 <!--
 ```
@@ -227,8 +177,9 @@ note left
     they run out of time.
 end note
 
-if (User has knowledge?) then (yes)
-else (no)
+
+if (User has knowledge?) then (yes (1))
+else (no (0))
     group #lightYellow "Seeking advice" {
         :CFP repair cafe for advice; <<procedure>>
         if (Out of time?) then (yes)
@@ -236,7 +187,11 @@ else (no)
         else (no)
         endif
     }
+    note left: SeekingAdviceBehaviour
 endif
+note left
+    DoIHaveKnowledgeBehaviour
+end note
 
 if (Is repairable?) then (yes)
 else (no)
@@ -282,4 +237,12 @@ end note
 
 ![](images/breakdown.png)
 
-![](images/sequence.png)
+## Retour d'expérience
+
+Je n'avais jamais rencontré la programmation orientée agents avant ce module, et je l'ai trouvé agréable à appréhender et à utiliser.
+
+Le point le plus difficile a été la prise en main du framework et de sa logique. La modélisation du problème a souvent été remise en cause, et les classes ont été modifiées de nombreuses fois. Mais une fois cette phase initiale dépassée, son utilisation est assez agréable et naturelle.
+
+`SeekingAdviceBehaviour` a longtemps été une classe dérivée de `AchieveREInitiator`, qui n'était finalement pas adaptée à cette situation puisqu'elle modélise une demande de réalisation d'une action. Le comportement dérive finalement de `ContractNetInitiator`, qui est plus approprié.
+
+J'aurais aimé pouvoir implémenter le reste du diagramme d'activité présenté plus haut, et avoir une idée plus claire du problème au départ pour le modéliser plus clairement.

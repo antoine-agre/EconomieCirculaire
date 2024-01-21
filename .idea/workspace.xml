@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="554b5701-5465-4731-a6ee-9e14f272adb5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/behaviours/BreakdownFSMBehaviour.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/behaviours/DoIHaveKnowledgeBehaviour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/RepairCafeAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/RepairCafeAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/agents/UserAgent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/agents/UserAgent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behaviors/BreakdownFSMBehaviour.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behaviors/CountdownBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviours/CountdownBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/behaviors/SeekingAdviceBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviours/SeekingAdviceBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Part.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/breakdown.png" beforeDir="false" afterPath="$PROJECT_DIR$/images/breakdown.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/behaviours/CountdownBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/behaviours/CountdownBehaviour.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/stores/IStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/stores/IStore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,5 +104,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/models/stores/IStore.java</url>
+          <line>3</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
